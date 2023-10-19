@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <script src="http://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ nextYear('안녕') }}
+        <!-- v-bind: > : 으로 v-bind 생략 가능 -->
+        <input v-bind:type="inputType" :value="inputData">
+        <!-- v-bind: 사용시 함수에 괄호 사용 -->
+        <a :href="getLink()" target="_blank">네이버</a>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                person:{
+                    name:'gildong',
+                    age:47
+                },
+                inputData:'hello',
+                inputType:'text',
+                link:'http://www.naver.com'
+            },
+            methods:{
+                nextYear: function(greeting){
+                    return greeting + '! ' + this.person.name + '은 내년에 ' + (this.person.age + 1) + '살 입니다.';
+                },
+                otherMethod: function(){
+                    this.nextYear();
+                },
+                getLink(){
+                    return this.link;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
