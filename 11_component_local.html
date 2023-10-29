@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      <view-button></view-button>
+    </div>
+    <hr>
+    <div id="app1">
+      <view-button></view-button>
+    </div>
+    <script>
+        Vue.component('hello-world',{
+          template: "<div>hello world {{ name }}</div>",
+          data(){
+            return {
+              name: "hong"
+            }
+          }
+        })
+
+        const ViewButton = {
+          template:`
+            <div>
+              {{ name }}
+              <hello-world></hello-world>
+              <button @click="changeText">click!!</button>
+            </div>
+          `,
+          data(){
+            return {
+              name: "hello world app"
+            }
+          },
+          methods:{
+            changeText(){
+              this.name = "hello world app !! updated.."
+            }
+          }
+        }
+        
+        const app = new Vue({
+          el:"#app",
+          components: {
+            'view-button' : ViewButton
+          }
+        })
+
+        const app1 = new Vue({
+          el:"#app1",
+          components: {
+            'view-button' : ViewButton
+          }
+        })
+    </script>
+</body>
+</html>

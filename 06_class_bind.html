@@ -16,6 +16,7 @@
 </head>
 <body>
     <div id="app">
+        <div :style="{ color: colorVal, fontSize: size }">hello world!!</div>
         <div :class="{ red:isRed, 'font-bold':isBold }">안녕하세요. 반갑습니다.</div><br>
         <button @click="updated">click!!</button>
     </div>
@@ -24,7 +25,9 @@
             el:"#app",
             data:{
                 isRed : false,
-                isBold : false
+                isBold : false,
+                colorVal : 'red',
+                size : '30px'
             },
             methods:{
                 updated(){
